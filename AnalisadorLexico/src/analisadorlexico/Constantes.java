@@ -37,7 +37,7 @@ public interface Constantes {
             EOF = 0,
             IGUAL = '=';
             
-    String  LETRA = "'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ'",
+    String  LETRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",
             IDENT = "$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",//VARIAVEL
             NUM = "0123456789",
             DIGITO ="0123456789",
@@ -45,7 +45,7 @@ public interface Constantes {
             FOR = "forFOR",
             IF = "ifIF",
             DO = "doDO",
-            VAZIOS = "\r\n\t",
+            VAZIOS = " \r\n\t",
             OP_BIN_LOGICO = "andANDorORxorXOR&&||",
             OP_COMP ="<>!",
             OP_ARIT = "*/",

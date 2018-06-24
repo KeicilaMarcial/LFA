@@ -27,7 +27,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractere == ATRIB) {
             leProxCaractere();
             q24();
-        } else if (this.proxCaractereIs(OP_COMP)) {
+        } else if (this.proxCaractere == '>' || this.proxCaractere == '!') {
             leProxCaractere();
             q32();
         } else if (this.proxCaractere == ATRIB) {
@@ -72,11 +72,24 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         }else if (this.proxCaractere =='&'){
             leProxCaractere();
             q20();
+        }else if (this.proxCaractere == '<'){
+            leProxCaractere();
+            q37();
+        }else if (this.proxCaractere == '$'){
+            leProxCaractere();
+            q1();
+        }else if (this.proxCaractereIs(VAZIOS)){
+            leProxCaractere();
+            q0();
+        }else if (this.proxCaractere == EOF){
+            leProxCaractere();
+            q100();
         }
         else {
             throw new ErroLexico(this.proxCaractere, LETRA + WHILE + FOR + IF + DO + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
         }
     }
+    
     void q23() {
         this.tokenReconhecido = Token.PT_VIRG;
     }
@@ -254,4 +267,45 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             q17();
         }
     }
+    
+    void q37(){
+        if (this.proxCaractere =='>'){
+            leProxCaractere();
+            q34();
+        } else if (this.proxCaractere =='='){
+            leProxCaractere();
+            q33();
+        } else{
+            throw new ErroLexico(this.proxCaractere, ">, =");
+        }
+    }
+    
+    void q34(){
+        this.tokenReconhecido = Token.OP_COMP;
+    }
+    
+    
+    void q1(){
+        this.tokenReconhecido = Token.IDENT;
+        if (this.proxCaractereIs(LETRA)) {
+            leProxCaractere();
+            q2();
+        } else
+            throw new ErroLexico(this.proxCaractere, LETRA);
+    }
+    
+    void q2(){
+        if (this.proxCaractereIs(LETRA)) {
+            leProxCaractere();
+            q2();
+        } else if (this.proxCaractereIs(NUM)) {
+            leProxCaractere();
+            q2();
+        }
+        
+    }
+    
+    public void q100() {
+		this.tokenReconhecido = Token.EOF;
+	}
 }
