@@ -8,7 +8,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         super(_nomeArquivoEntrada);
     }
 
-    public void s0() {
+    public void q0() {
         if (this.proxCaractere == AP) {
             leProxCaractere();
             q26();
@@ -39,237 +39,44 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractereIs(OP_ARIT)){
             leProxCaractere();
             q21();
-        }/*
-        if (this.proxCaractereIs(VAZIOS)) {
+        } else if (this.proxCaractereIs(OP_ARIT_SINAL)){
             leProxCaractere();
-            s2();
-        }
-        if (this.proxCaractere == PT_VIRG) {
-            leProxCaractere();
-            s3();
-        } /*
-            if(this.proxCaractereIs(IDENT)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(NUM)) {
-			leProxCaractere();
-			s2();
-		}/*
-                if(this.proxCaractereIs(WHILE)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(FOR)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(IF)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(DO)) {
-			leProxCaractere();
-			s1();
-		}
-
-                if(this.proxCaractereIs(OP_COMP)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(OP_BIN_LOGICO)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == OP_UNI_LOGICO) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == OP_UNI_LOGICO) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(OP_ARIT)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractereIs(OP_ARIT_SINAL)) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == ATRIB) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == AP) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == FP) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == AC) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == FC) {
-			leProxCaractere();
-			s1();
-		}
-                if(this.proxCaractere == PT_VIRG) {
-			leProxCaractere();
-			s1();
-		}*/ else {
-            throw new ErroLexico(this.proxCaractere, LETRA + WHILE + FOR + IF + DO + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
-        }
-    }/*
-	public void s1() {
-		//if (this.proxCaractere == '$')
-                //String teste =(String)this.tokenReconhecido.toString();
-		if(this.proxCaractereIs(IDENT)) {
-			leProxCaractere();
-			s1();
-		}
-	}
-	public void s2() {
-		if(this.proxCaractereIs(NUM)) {
-			leProxCaractere();
-			s2();
-		}
-		else if(this.proxCaractere ==PT) {
-			leProxCaractere();
-			s3();
-		}
-                else if(this​.proxCaractereIs(OP_ARIT_SINAL)) {
-                    leProxCaractere();
-                    s4();
-                }
-		else
-			throw new ErroLexico(this.proxCaractere,NUM+PT);
-	}
-         public void s3() {
-           if(this.proxCaractereIs(NUM)) {
-			leProxCaractere();
-			s3();
-		}
-            else if(this​.proxCaractereIs(OP_ARIT_SINAL)) {
-                    leProxCaractere();
-                    s4();
-                }
-         else
-	    throw new ErroLexico(this.proxCaractere,NUM);
-         } 
-         
-         public void s4() {
-           if(this.proxCaractereIs(NUM)) {
-			leProxCaractere();
-			s2();
-		}
-         }
-         
-        /*
-	public void s3() {
-		this.tokenReconhecido = Token.ATRIB;
-	}
-	public void s4() {
-		this.tokenReconhecido = Token.IDENT;
-		if(this.proxCaractereIs(LETRAS+HIFEN)) {
-			leProxCaractere();
-			s4();
-		}
-	}/*
-	public void s2() {
-		this.tokenReconhecido = Token.VAZIOS;
-	}
-         public void s3() {
-		this.tokenReconhecido = Token.PT_VIRG;
-	}
-	public void s1() {
-		this.tokenReconhecido = Token.EOF;
-	}*/
-
- /*public void q0() {
-        if (this.proxCaractere == 'd') {
-            leProxCaractere();
-            q6();
-        } else if (this.proxCaractere == 'w') {
-            leProxCaractere();
-            q1();
-        } else if (this.proxCaractere == 'i') {
-            leProxCaractere();
-            q8();
-        } else if (this.proxCaractere == 's') {
-            leProxCaractere();
-            q10();
-        } else if (this.proxCaractere == 'c') {
-            leProxCaractere();
-            q16();
-        } else if (this.proxCaractere == 'f') {
-            leProxCaractere();
-            q20();
-        } else if (this.proxCaractere == PT_VIRG) {
+            q22();
+        } else if (this.proxCaractere == PT_VIRG){
             leProxCaractere();
             q23();
-        } else if (this.proxCaractere == AP) {
-            leProxCaractere();
-            q24();
-        } else if (this.proxCaractere == FP) {
-            leProxCaractere();
-            q25();
-        } else if (this.proxCaractere == AC) {
-            leProxCaractere();
-            q26();
-        } else if (this.proxCaractere == FC) {
-            leProxCaractere();
-            q27();
-        } else if (this.proxCaractere == DOIS_PT) {
-            leProxCaractere();
-            q28();
-        } else if (this.proxCaractereIs(VAR)) {
-            leProxCaractere();
-            q29();
-        } else if (this.proxCaractere == IGUAL) {
+        } else if (this.proxCaractereIs(NUM)){
             leProxCaractere();
             q30();
-        } else if ((this.proxCaractere == MAIS) || (this.proxCaractere == MENOS)) {
+        } else if (this.proxCaractere =='w' || this.proxCaractere =='W'){
             leProxCaractere();
-            q33();
-        } else if (this.proxCaractereIs(NUM)) {
+            q3();
+        } else if (this.proxCaractere =='d'|| this.proxCaractere =='D'){
             leProxCaractere();
-            q37();
-        } else if (this.proxCaractere == ASTERISCO) {
+            q8();
+        } else if (this.proxCaractere =='f'|| this.proxCaractere =='F'){
             leProxCaractere();
-            q45();
-        } else if (this.proxCaractere == BARRA) {
+            q10();
+        }else if (this.proxCaractere =='i'|| this.proxCaractere =='I'){
             leProxCaractere();
-            q45();
-        } else if (this.proxCaractere == PT) {
+            q13();
+        }else if (this.proxCaractere =='a'|| this.proxCaractere =='A'){
             leProxCaractere();
-            q38();
-        } else if (this.proxCaractere == COMERCIAL) {
+            q15();
+        }else if (this.proxCaractere =='o'|| this.proxCaractere =='O'){
             leProxCaractere();
-            q32();
-        } else if (this.proxCaractereIs(ASPA)) {
+            q18();
+        }else if (this.proxCaractere =='|'){
             leProxCaractere();
-            q34();
-        } else if (this.proxCaractere == BARRA_OU) {
+            q19();
+        }else if (this.proxCaractere =='&'){
             leProxCaractere();
-            q41();
-        } else if ((this.proxCaractere == MAIOR) || (this.proxCaractere == MENOR) || (this.proxCaractere == OP_UN)) {
-            leProxCaractere();
-            q43();
-        } else if (this.proxCaractereIs(VAZIOS)) {
-            leProxCaractere();
-            q0();
-        } else if (this.proxCaractere == EOF) {
-            leProxCaractere();
-            q46();
-        } else {
-            throw new ErroLexico(this.proxCaractere, CARACTER + VAR + NUM + WHILE + FOR + IF + SWITCH + CASE + DO);
+            q20();
         }
-    }*/
-
+        else {
+            throw new ErroLexico(this.proxCaractere, LETRA + WHILE + FOR + IF + DO + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
+        }
+    }
     void q23() {
         this.tokenReconhecido = Token.PT_VIRG;
     }
@@ -318,6 +125,133 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             q32();
         } else {
             this.tokenReconhecido = Token.OP_COMP;
+        }
+    }
+    void q21(){
+        this.tokenReconhecido = Token.OP_ARIT;
+    }
+    void q22(){
+        this.tokenReconhecido = Token.OP_ARIT_SINAL;
+        if(this.proxCaractereIs(NUM)){
+            leProxCaractere();
+            q30();
+        }
+    }
+    void q30(){
+        this.tokenReconhecido = Token.NUM;
+        if(this.proxCaractere == PT){
+            leProxCaractere();
+            q31();
+        } else if (this.proxCaractereIs(NUM)){
+            leProxCaractere();
+            q30();
+        } 
+    }
+    void q31(){
+        if(this.proxCaractereIs(NUM)){
+            leProxCaractere();
+            q50();
+        }else
+            throw new ErroLexico(this.proxCaractere,NUM);
+        
+    }
+    void q50(){
+        if(this.proxCaractereIs(NUM)){
+            leProxCaractere();
+            q50();
+        }
+    }
+    void q3(){
+        if (this.proxCaractere =='h' || this.proxCaractere =='H'){
+            leProxCaractere();
+            q4();
+        }
+    }
+    void q4(){
+        if (this.proxCaractere =='i' || this.proxCaractere =='I'){
+            leProxCaractere();
+            q5();
+        }
+    }
+    void q5(){
+        if (this.proxCaractere =='l' || this.proxCaractere =='L'){
+            leProxCaractere();
+            q6();
+        }
+    }
+    void q6(){
+        if (this.proxCaractere =='e' || this.proxCaractere =='E'){
+            leProxCaractere();
+            q7();
+        }
+    }
+    void q7(){
+        this.tokenReconhecido = Token.WHILE;
+    }
+    void q8(){
+        if (this.proxCaractere =='o' || this.proxCaractere =='O'){
+            leProxCaractere();
+            q9();
+        }
+    }
+    void q9(){
+        this.tokenReconhecido = Token.DO;
+    }
+    void q10(){
+        if (this.proxCaractere =='o' || this.proxCaractere =='O'){
+            leProxCaractere();
+            q11();
+        }
+    }
+    void q11(){
+        if (this.proxCaractere =='r' || this.proxCaractere =='R'){
+            leProxCaractere();
+            q12();
+        }
+    }
+    void q12(){
+        this.tokenReconhecido = Token.FOR;
+    }
+    void q13(){
+        if (this.proxCaractere =='f' || this.proxCaractere =='F'){
+            leProxCaractere();
+            q14();
+        }
+    }
+    void q14(){
+        this.tokenReconhecido = Token.IF;
+    }
+    void q15(){
+        if (this.proxCaractere =='n' || this.proxCaractere =='N'){
+            leProxCaractere();
+            q16();
+        }
+    }
+    void q16(){
+        if (this.proxCaractere =='d' || this.proxCaractere =='D'){
+            leProxCaractere();
+            q17();
+        }
+    }
+    void q17(){
+        this.tokenReconhecido = Token.OP_BIN_LOGICO;
+    }
+    void q18(){
+        if (this.proxCaractere =='r' || this.proxCaractere =='R'){
+            leProxCaractere();
+            q17();
+        }
+    }
+    void q19(){
+        if (this.proxCaractere =='|'){
+            leProxCaractere();
+            q17();
+        }
+    }
+    void q20(){
+        if (this.proxCaractere =='&'){
+            leProxCaractere();
+            q17();
         }
     }
 }
