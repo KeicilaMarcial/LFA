@@ -46,4 +46,9 @@ public class AnalisadorLexico extends Analisador {
 		else
 			return false;
 	}
+        
+        public void posicaoErro(){ // RETORNAR DUAS VARIAVEIS ABAIXO // retornar como um objeto/struct ou string
+            //this.linha = 1;  // linha atual do arquivo fonte
+            //posicao = 0; // posição do caractere a ser lido na entrada
+        }
 }
