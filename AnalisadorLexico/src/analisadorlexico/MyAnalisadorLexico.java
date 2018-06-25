@@ -27,10 +27,10 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractere == ATRIB) {
             leProxCaractere();
             q24();
-        } else if (this.proxCaractere == '>' || this.proxCaractere == '!') {
+        } else if (this.proxCaractere == '>' || this.proxCaractere == '!') { 
             leProxCaractere();
             q32();
-        } else if (this.proxCaractere == ATRIB) {
+        } else if (this.proxCaractere == ATRIB) { // remover?
             leProxCaractere();
             q33();
         } else if (this.proxCaractere == OP_UNI_LOGICO) {
@@ -115,7 +115,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q32();
         } else {
-            this.tokenReconhecido = Token.OP_COMP;
+            this.tokenReconhecido = Token.ATRIB;
         }
     }
 
