@@ -38,7 +38,6 @@ public interface Constantes {
             IGUAL = '=';
             
     String  LETRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",
-            IDENT = "$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",//VARIAVEL
             NUM = "0123456789",
             DIGITO ="0123456789",
             WHILE = "whileWHILE",
