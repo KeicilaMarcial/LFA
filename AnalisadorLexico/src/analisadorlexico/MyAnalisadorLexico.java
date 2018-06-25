@@ -76,6 +76,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             leProxCaractere();
             q37();
         } else if (this.proxCaractere == '$') {
+            //System.err.println("aaaa");
             leProxCaractere();
             q1();
         } else if (this.proxCaractereIs(VAZIOS)) {
@@ -86,13 +87,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             q100();
         } else {
             throw new ErroLexico(this.proxCaractere, LETRA + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
-        }
-    }
-
-    void vazio() {
-        leProxCaractere();
-        if (this.proxCaractereIs(VAZIOS)) {
-            vazio();
         }
     }
 
@@ -117,27 +111,22 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
 
     void q24() {
-        vazio();
         if (this.proxCaractere == IGUAL) {
             leProxCaractere();
             q32();
-        } else if (this.proxCaractereIs(NUM)) {
-            this.tokenReconhecido = Token.ATRIB;
         } else {
-            throw new ErroLexico(this.proxCaractere, IGUAL + NUM);
-        }
+            this.tokenReconhecido = Token.ATRIB;
+        } 
     }
 
     void q32() {
-        vazio();
+        //;
         if (this.proxCaractere == IGUAL) {
             leProxCaractere();
             q33();
-        } else if (this.proxCaractereIs(NUM) || this.proxCaractere == '$') {
-            this.tokenReconhecido = Token.OP_COMP;
         } else {
-            throw new ErroLexico(this.proxCaractere, IGUAL + NUM);
-        }
+            this.tokenReconhecido = Token.OP_COMP;
+        } 
     }
 
     void q33() {
@@ -145,14 +134,12 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
 
     void q25() {
-        vazio();
+        ;
         if (this.proxCaractere == '=') {
             leProxCaractere();
             q32();
-        } else if (this.proxCaractereIs(NUM) || this.proxCaractere == '$') {
-            this.tokenReconhecido = Token.OP_COMP;
         } else {
-            throw new ErroLexico(this.proxCaractere, IGUAL + NUM);
+            this.tokenReconhecido = Token.OP_UNI_LOGICO;
         }
     }
 
@@ -161,15 +148,12 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
     }
 
     void q22() {
-        vazio();
+        ;
         this.tokenReconhecido = Token.OP_ARIT_SINAL;
-        if (this.proxCaractereIs(NUM)) {
+        if (this.proxCaractereIs(NUM)) { 
             leProxCaractere();
             q30();
-        }/*else if(this.proxCaractere == '+' || this.proxCaractere == '-'){
-                leProxCaractere();
-                q22();
-        }==============================================================================================*/
+        }
     }
 
     void q30() {
@@ -180,27 +164,21 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractereIs(NUM)) {
             leProxCaractere();
             q30();
-        } else {
-            throw new ErroLexico(this.proxCaractere, NUM+" ou .");
         }
     }
 
     void q31() {
+        this.tokenReconhecido = Token.NUM;
         if (this.proxCaractereIs(NUM)) {
             leProxCaractere();
             q50();
-        } else {
-            throw new ErroLexico(this.proxCaractere, NUM);
         }
-
     }
 
     void q50() {
         if (this.proxCaractereIs(NUM)) {
             leProxCaractere();
             q50();
-        } else {
-            throw new ErroLexico(this.proxCaractere, NUM);
         }
     }
 
@@ -362,8 +340,6 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractereIs(LETRA)) {
             leProxCaractere();
             q2();
-        } else {
-            throw new ErroLexico(this.proxCaractere, LETRA);
         }
     }
 
@@ -374,10 +350,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         } else if (this.proxCaractereIs(NUM)) {
             leProxCaractere();
             q2();
-        }else {
-            throw new ErroLexico(this.proxCaractere, LETRA+NUM);
-        }
-
+        }   
     }
 
     public void q100() {

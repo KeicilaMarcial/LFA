@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/chfld/OneDrive/Documents/GitHub/LFA/AnalisadorLexico/src/analisadorlexico/MyAnalisadorLexico.java</file>
+=======
 <<<<<<< HEAD
             <file>file:/C:/Users/Notebook/Documents/GitHub/LFA/AnalisadorLexico/src/analisadorlexico/MyAnalisadorLexico.java</file>
             <file>file:/C:/Users/Notebook/Documents/GitHub/LFA/AnalisadorLexico/src/analisadorlexico/TesteAnalisadorLexico.java</file>
@@ -13,6 +17,7 @@
             <file>file:/C:/Users/chfld/OneDrive/Documents/GitHub/LFA/AnalisadorLexico/src/analisadorlexico/ErroLexico.java</file>
             <file>file:/C:/Users/chfld/OneDrive/Documents/GitHub/LFA/AnalisadorLexico/src/analisadorlexico/AnalisadorLexico.java</file>
 >>>>>>> 0d5fe4c53a636d9b656c97037c3ca370d2fada61
+>>>>>>> 9812b1c65bd9033e35841c5681a9959bfe9198fc
         </group>
     </open-files>
 </project-private>
