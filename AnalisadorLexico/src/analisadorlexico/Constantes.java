@@ -40,12 +40,8 @@ public interface Constantes {
     String  LETRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",
             NUM = "0123456789",
             DIGITO ="0123456789",
-            WHILE = "whileWHILE",
-            FOR = "forFOR",
-            IF = "ifIF",
-            DO = "doDO",
             VAZIOS = " \r\n\t",
-            OP_BIN_LOGICO = "andANDorORxorXOR&&||",
+            OP_BIN_LOGICO = "&|",
             OP_COMP ="<>!",
             OP_ARIT = "*/",
             OP_ARIT_SINAL = "+-";

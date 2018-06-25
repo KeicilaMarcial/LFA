@@ -86,7 +86,7 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
             q100();
         }
         else {
-            throw new ErroLexico(this.proxCaractere, LETRA + WHILE + FOR + IF + DO + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
+            throw new ErroLexico(this.proxCaractere, LETRA + OP_COMP + OP_BIN_LOGICO + OP_UNI_LOGICO + OP_ARIT + OP_ARIT_SINAL + ATRIB + AP + FP + AC + FC + PT_VIRG + LETRA + DIGITO + EOF + VAZIOS);
         }
     }
     
