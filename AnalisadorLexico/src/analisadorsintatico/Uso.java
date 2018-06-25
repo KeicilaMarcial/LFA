@@ -14,7 +14,7 @@ public class Uso {
             if (args.length != 1) {
                 throw new RuntimeException(" Esqueceu de escrever o nome do arquivo de entrada! \n");
             }
-            parser = new MyAnalisadorSintatico(str);
+            parser = new MyAnalisadorSintatico(args[0]);
             parser.blocoComandos();
             System.out.println("Análise realizada com sucesso no arquivo " + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
         } catch (ErroLexico e) {
