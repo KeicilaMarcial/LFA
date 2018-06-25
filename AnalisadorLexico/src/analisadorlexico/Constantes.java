@@ -47,5 +47,5 @@ public interface Constantes {
             OP_ARIT_SINAL = "+-";
                     
 
-    String NOME_DEFAULT_ARQUIVO_ENTRADA = "entrada.txt";
+    String NOME_DEFAULT_ARQUIVO_ENTRADA = "C:\\Users\\chfld\\OneDrive\\Documents\\GitHub\\LFA\\AnalisadorLexico\\entrada.txt";
 }
