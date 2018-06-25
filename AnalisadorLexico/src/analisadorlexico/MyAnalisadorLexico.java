@@ -178,24 +178,32 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractere =='h' || this.proxCaractere =='H'){
             leProxCaractere();
             q4();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"h or H");
         }
     }
     void q4(){
         if (this.proxCaractere =='i' || this.proxCaractere =='I'){
             leProxCaractere();
             q5();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"i or I");
         }
     }
     void q5(){
         if (this.proxCaractere =='l' || this.proxCaractere =='L'){
             leProxCaractere();
             q6();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"l or L");
         }
     }
     void q6(){
         if (this.proxCaractere =='e' || this.proxCaractere =='E'){
             leProxCaractere();
             q7();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"e or E");
         }
     }
     void q7(){
@@ -214,12 +222,16 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractere =='o' || this.proxCaractere =='O'){
             leProxCaractere();
             q11();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"o or O");
         }
     }
     void q11(){
         if (this.proxCaractere =='r' || this.proxCaractere =='R'){
             leProxCaractere();
             q12();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"r or R");
         }
     }
     void q12(){
@@ -229,6 +241,8 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractere =='f' || this.proxCaractere =='F'){
             leProxCaractere();
             q14();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"f or F");
         }
     }
     void q14(){
@@ -238,12 +252,16 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractere =='n' || this.proxCaractere =='N'){
             leProxCaractere();
             q16();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"n or N");
         }
     }
     void q16(){
         if (this.proxCaractere =='d' || this.proxCaractere =='D'){
             leProxCaractere();
             q17();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"d or D");
         }
     }
     void q17(){
@@ -253,18 +271,24 @@ public class MyAnalisadorLexico extends AnalisadorLexico {
         if (this.proxCaractere =='r' || this.proxCaractere =='R'){
             leProxCaractere();
             q17();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"r or R");
         }
     }
     void q19(){
         if (this.proxCaractere =='|'){
             leProxCaractere();
             q17();
+        }else {
+         throw new ErroLexico(this.proxCaractere,"|");
         }
     }
     void q20(){
         if (this.proxCaractere =='&'){
             leProxCaractere();
             q17();
+        } else {
+         throw new ErroLexico(this.proxCaractere,"&");
         }
     }
     
