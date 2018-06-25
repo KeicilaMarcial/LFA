@@ -37,20 +37,15 @@ public interface Constantes {
             EOF = 0,
             IGUAL = '=';
             
-    String  LETRA = "'abcdefghijklmnopqrstuvwxyz0123456789ABCDEFGHIJKLMOPQRSTUVWXYZ'",
-            IDENT = "$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",//VARIAVEL
+    String  LETRA = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMOPQRSTUVWXYZ",
             NUM = "0123456789",
             DIGITO ="0123456789",
-            WHILE = "whileWHILE",
-            FOR = "forFOR",
-            IF = "ifIF",
-            DO = "doDO",
-            VAZIOS = "\r\n\t",
-            OP_BIN_LOGICO = "andANDorORxorXOR&&||",
+            VAZIOS = " \r\n\t",
+            OP_BIN_LOGICO = "&|",
             OP_COMP ="<>!",
             OP_ARIT = "*/",
             OP_ARIT_SINAL = "+-";
                     
 
-    String NOME_DEFAULT_ARQUIVO_ENTRADA = "entrada.txt";
+    String NOME_DEFAULT_ARQUIVO_ENTRADA = "C:\\Users\\chfld\\OneDrive\\Documents\\GitHub\\LFA\\AnalisadorLexico\\entrada.txt";
 }

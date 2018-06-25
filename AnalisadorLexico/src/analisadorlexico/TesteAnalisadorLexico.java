@@ -1,11 +1,15 @@
 package analisadorlexico;
 
+import analisadorsintatico.Tela;
+
 public class TesteAnalisadorLexico {
 	static public MyAnalisadorLexico scanner;
+        
 	public static void main(String[] args) {
+           new Tela().setVisible(true);
 		try {
 			if(args.length != 1)
-				throw new RuntimeException("esqueceu de escrever o nome do arquivo de entrada! \n" + "No Eclipse insira em: Run - Open Run Dialog - Arguments");
+				throw new RuntimeException("esqueceu de escrever o nome do arquivo de entrada! \n");
 			scanner = new MyAnalisadorLexico(args[0]);
 
 			// chama a máquina de Moore várias vezes até encontrar o fim de arquivo
