@@ -6,11 +6,7 @@ public class TesteAnalisadorLexico {
 	static public MyAnalisadorLexico scanner;
         
 	public static void main(String[] args) {
-<<<<<<< HEAD
-           // new Tela().setVisible(true);
-=======
-            //new Tela().setVisible(true);
->>>>>>> 3a7131a000af5729789ef9fc7b202f2687734e8f
+           new Tela().setVisible(true);
 		try {
 			if(args.length != 1)
 				throw new RuntimeException("esqueceu de escrever o nome do arquivo de entrada! \n");
