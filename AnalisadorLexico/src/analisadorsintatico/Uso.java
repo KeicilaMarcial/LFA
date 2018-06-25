@@ -1,18 +1,23 @@
 package analisadorsintatico;
-
+import analisadorsintatico.Tela;
 import analisadorlexico.*;
 import javax.swing.JOptionPane;
 
 public class Uso {
-
-    static public MyAnalisadorSintatico parser;
-
+     public static Tela tela = new Tela();
+     static public MyAnalisadorSintatico parser;
+    
     public static void main(String[] args) {
+        String str = "entrada.txt";
+        tela.setVisible(true);
+        tela.setserv(str);
+         
         try {
-            String str = "entrada.txt";
             
             if (args.length != 1) {
+               
                 throw new RuntimeException(" Esqueceu de escrever o nome do arquivo de entrada! \n");
+                
             }
             parser = new MyAnalisadorSintatico(str);
             parser.blocoComandos();
