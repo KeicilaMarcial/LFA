@@ -1,48 +1,5 @@
 package analisadorsintatico;
 
-<<<<<<< HEAD
-/**
- *
- * @author Ana Flávia
- */
-public class MyAnalisadorSintatico extends AnalisadorSintatico {
-	
-	public MyAnalisadorSintatico(String _nomeArquivoEntrada) {
-		super(_nomeArquivoEntrada);
-	}
-	public void inicio() {
-		corpo(); 
-		reconhece(Token.EOF);
-	}
-	public void corpo() {
-		if(proxTokenIs(Token.IDENT)) {
-			comandoAtribuicao();
-			reconhece(Token.PT_VIRG);
-			corpo();
-		}
-		else if(proxTokenIs(Token.EOF))
-			;
-		else {
-			Token[] tokensEsperados = {Token.IDENT,Token.EOF};
-			throw new ErroSintatico(this.scanner.tokenReconhecido,tokensEsperados);
-		}
-	}
-	public void comandoAtribuicao() {
-		reconhece(Token.IDENT);
-		reconhece(Token.ATRIB);
-		exp();
-	}
-	public void exp() {
-		if(proxTokenIs(Token.NUM)) 
-			leProxToken();
-		else if(proxTokenIs(Token.IDENT)) 
-			leProxToken();
-		else {
-			Token[] tokensEsperados = {Token.NUM,Token.IDENT};
-			throw new ErroSintatico(this.scanner.tokenReconhecido,tokensEsperados);
-		}
-	}
-=======
 import analisadorlexico.Constantes;
 
 /**
@@ -64,14 +21,15 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
 	if(proxTokenIs(Token.WHILE) || proxTokenIs(Token.DO) || proxTokenIs(Token.FOR) || 
            proxTokenIs(Token.IF) || proxTokenIs(Token.IDENT)) { 
             comando();
-            reconhece(Token.PT_VIRG);
             blocoComandos();
         }
         else if(proxTokenIs(Token.EOF)) {
             reconhece(Token.EOF);
         }
+        else if(proxTokenIs(Token.FC)) {
+        }
         else {
-            Token[] tokensEsperados = {Token.IDENT, Token.NUM, Token.EOF};
+            Token[] tokensEsperados = {Token.IDENT, Token.EOF};
             throw new ErroSintatico(this.scanner.tokenReconhecido, tokensEsperados);
         }
     }
@@ -93,15 +51,11 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
             atrib();
         }
         else {
-            Token[] tokensEsperados = {Token.IDENT, Token.NUM, Token.EOF};
+            Token[] tokensEsperados = {Token.IDENT, Token.EOF};
             throw new ErroSintatico(this.scanner.tokenReconhecido, tokensEsperados);
         }
     }
     
-    /**
-     *função exp pode receber um operador2 seguido de uma expressão e um R(operador1 seguido de uma expressão, R ou vazio) ou abre parênteses com uma expressão dentro, fecha parêntes e R, ou uma variável e R, ou um número e R, ou um sinal(-,+) seguido de um número e R
-     * exp = operador2 exp R | AP exp FP R | VAR R | NUM R| SINAL NUM R
-     */
     public void exp() {
         if(proxTokenIs(Token.OP_UNI_LOGICO)) {
             reconhece(Token.OP_UNI_LOGICO);
@@ -118,7 +72,7 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
             reconhece(Token.NUM);
             R();
         }
-        else if(proxTokenIs(Token.OP_ARIT_SINAL)) { //aqui é sinal: apenas + ou -. Então é OP_UN_BIN
+        else if(proxTokenIs(Token.OP_ARIT_SINAL)) {
             reconhece(Token.OP_ARIT_SINAL);
             reconhece(Token.NUM);
             R();
@@ -129,12 +83,8 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
     
-    /**
-     * função R é um operador1 seguido de uma expressão e chamando a própria função R ou vazia
-     * GR: R = operador1 exp R | ?
-     */
     public void R() {
-        if(proxTokenIs(Token.OP_COMP) || proxTokenIs(Token.OP_BIN_LOGICO) || 
+        if(proxTokenIs(Token.OP_COMP) || proxTokenIs(Token.OP_BIN_LOGICO)  || 
            proxTokenIs(Token.OP_ARIT) || proxTokenIs(Token.OP_ARIT_SINAL)) {
             operador();
             exp();
@@ -144,10 +94,6 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
             reconhece(Token.EOF);
     }
     
-    /**
-     *função while reconhece o while seguido de abre parênteses com uma expressão dentro e fecha parêntenses seguido de um bloco
-     * while = WHILE AP exp FP bloco
-     */
     public void While() {
         reconhece(Token.WHILE);
         reconhece(Token.AP);
@@ -156,10 +102,6 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         corpo();
     }
     
-    /**
-     *função if reconhece o if seguido de abre parênteses com uma expressão dentro e fecha parêntenses seguido de um bloco
-     * GR: if = IF AP exp FP bloco
-     */
     public void If() {
         reconhece(Token.IF);
         reconhece(Token.AP);
@@ -168,15 +110,10 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         corpo();
     }
     
-    /**
-     * função for reconhece o token for, em seguida abre parênteses com uma atribuição dentro, ponto e vírgula, depois uma expressão, ponto e vírgula, atribuição e fecha parênteses seguido de um bloco  
-     * GR: for = FOR AP atribuicao PT_VIRG exp PT_VIRG atribuicao FP bloco 
-     */
-
     public void For() {
         reconhece(Token.FOR);
         reconhece(Token.AP);
-        exp();
+        exp(); //* ************** if else /
         reconhece(Token.PT_VIRG);
         exp();
         reconhece(Token.PT_VIRG);
@@ -185,20 +122,13 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         corpo();
     }
     
-    /**
-     *função atribuição pode ser uma variável ou igual seguido de uma expressão  
-     * GR: atribuicao = VAR IGUAL exp
-     */
     public void atrib() {
         reconhece(Token.IDENT);
         reconhece(Token.ATRIB);
         exp();
+        reconhece(Token.PT_VIRG);
     }
     
-    /**
-     * função operador1 que pode ser um operador unário binário ou só um operador binário
-     * GR: operador1 = OP_UN_BIN | OP_BIN
-     */
     public void operador() {
         if (proxTokenIs(Token.OP_COMP)){
             reconhece(Token.OP_COMP);
@@ -214,15 +144,6 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         }
     }
 
-    /**
-     * função operador2 que pode ser um operador unário binário ou só um operador unário 
-     * GR: operador2 = OP_UN_BIN | OP_UN
-     */
-    
-    /**
-     * função DoWhile reconhece o token DO seguido de um abre chaves com um bloco dentro e fecha chaves, depois um while, abre parênteses com uma expressão dentro e fecha parênteses
-     * GR: do_while = DO AC bloco FC WHILE AP exp FP
-     */
     public void Do() {
         reconhece(Token.DO);
         corpo();
@@ -230,6 +151,7 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
         reconhece(Token.AP);
         exp();
         reconhece(Token.FP);
+        reconhece(Token.PT_VIRG);
     }
     
     public void corpo(){
@@ -243,5 +165,4 @@ public class MyAnalisadorSintatico extends AnalisadorSintatico {
             comando();
         }
     }
->>>>>>> cc7738a2ed046bfd1cbdc26aa8e9026014473bef
 }

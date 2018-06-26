@@ -1,5 +1,19 @@
-if()
-if(){
 $a = 1;
-$a = 3;
+	for ($a;$a>2;$a)
+		while($a && !$b) 
+			$a =2;
+			if($a && $b || $a || $dadw2){
+				$a =123;
+				$faefae2fae =123;
+				$ab2222 =123;
+			}
+		}
+		do{
+			while(1) {
+				$a = 2;
+				if($a && !$b || !$aaa2)
+					$a =123;
+			}
+			$a= 2;
+		}while($a);
 }

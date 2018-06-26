@@ -1,9 +1,8 @@
 package analisadorsintatico;
 
-import analisadorsintatico.*;
-import analisadorlexico.*;
 import analisadorlexico.ErroLexico;
 import static analisadorsintatico.Uso.parser;
+import static analisadorsintatico.Uso.tela;
 import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.JTextArea;
@@ -25,10 +24,6 @@ public class Tela extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void sendText(String texto) {
-        jTextArea1.append(texto + "\n");
-    }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -47,6 +42,7 @@ public class Tela extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("ANALISADOR EM PHP");
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -136,7 +132,7 @@ public class Tela extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+  
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
 
@@ -155,7 +151,7 @@ public class Tela extends javax.swing.JFrame {
 
             filename = file.getPath();
 
-            jTextArea1.setText(jTextArea1.getText() + "Arquivo aberto\n Esperando para ser analizado..\n" + filename);
+            jTextArea1.setText("Arquivo aberto\n Esperando para ser analizado..\n" + filename + "\n");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -168,9 +164,9 @@ public class Tela extends javax.swing.JFrame {
 
                 }*/
             String str = "entrada.txt";
-            parser = new MyAnalisadorSintatico(str);
+            parser = new MyAnalisadorSintatico(filename);
             parser.blocoComandos();
-            jTextArea1.setText("Análise realizada com sucesso no arquivo \n" + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
+            this.sendText("Análise realizada com sucesso no arquivo \n" + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
             System.out.println("Análise realizada com sucesso no arquivo " + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
         } catch (ErroLexico e) {
             this.sendText("Erro léxico: " + e.toString());
@@ -179,10 +175,14 @@ public class Tela extends javax.swing.JFrame {
             this.sendText("Erro sintático: " + e.toString());
             System.out.println("Erro sintático: " + e.toString());
         } catch (RuntimeException e) {
-            this.sendText("Erro: " + e.getMessage());
+            this.sendText("Selecione um arquivo primeiro!");
             System.out.println("Erro: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    public void sendText(String texto) {
+        jTextArea1.append(texto + "\n");
+    }
 
     /**
      * @param args the command line arguments
