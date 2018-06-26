@@ -10,8 +10,7 @@ public class Uso {
     public static void main(String[] args) {
         String str = "entrada.txt";
         tela.setVisible(true);
-        tela.setserv(str);
-         
+        
         try {
             
             if (args.length != 1) {
@@ -19,7 +18,7 @@ public class Uso {
                 throw new RuntimeException(" Esqueceu de escrever o nome do arquivo de entrada! \n");
                 
             }
-            parser = new MyAnalisadorSintatico(args[0]);
+            parser = new MyAnalisadorSintatico(str);
             parser.blocoComandos();
             System.out.println("Análise realizada com sucesso no arquivo " + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
         } catch (ErroLexico e) {

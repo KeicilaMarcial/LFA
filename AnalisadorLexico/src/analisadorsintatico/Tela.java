@@ -1,6 +1,7 @@
-
 package analisadorsintatico;
 
+import analisadorsintatico.*;
+import analisadorlexico.*;
 import analisadorlexico.ErroLexico;
 import static analisadorsintatico.Uso.parser;
 import java.io.File;
@@ -13,17 +14,19 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  * @author julio
  */
 public class Tela extends javax.swing.JFrame {
+
     static public MyAnalisadorSintatico parser;
-    public String filename ;
+    public String filename;
+
     /**
      * Creates new form Tela
      */
     public Tela() {
         initComponents();
     }
-    
-    public void setserv(String texto){
-        jTextArea1.append(texto);
+
+    public void sendText(String texto) {
+        jTextArea1.append(texto + "\n");
     }
 
     /**
@@ -140,39 +143,44 @@ public class Tela extends javax.swing.JFrame {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setDialogTitle("Procurar Arquivo");
         fileChooser.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        
+
         FileNameExtensionFilter filter = new FileNameExtensionFilter("Arquivo.txt", "txt");
-        
+
         fileChooser.setFileFilter(filter);
         int retorno = fileChooser.showOpenDialog(this);
-        
-        if(retorno == JFileChooser.APPROVE_OPTION){
-            
-           File file = fileChooser.getSelectedFile();
-         
+
+        if (retorno == JFileChooser.APPROVE_OPTION) {
+
+            File file = fileChooser.getSelectedFile();
+
             filename = file.getPath();
-               
-            jTextArea1.setText(jTextArea1.getText()+ "Arquivo aberto\n Esperando para ser analizado..\n"+ filename);         
+
+            jTextArea1.setText(jTextArea1.getText() + "Arquivo aberto\n Esperando para ser analizado..\n" + filename);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-         try {
-            
-            if (filename.length() != 1) {
-               
-                throw new RuntimeException(" Esqueceu de escrever o nome do arquivo de entrada! \n");
-               
-            }
-            parser = new MyAnalisadorSintatico(filename);
+        try {
+
+            /*if (filename.length() != 1) {
+
+                throw new RuntimeException(" ndhdhdrhdhdrEsqueceu de escrever o nome do arquivo de entrada! \n");
+
+                }*/
+            String str = "entrada.txt";
+            parser = new MyAnalisadorSintatico(str);
             parser.blocoComandos();
-            jTextArea1.setText("Análise realizada com sucesso no arquivo " + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
+            jTextArea1.setText("Análise realizada com sucesso no arquivo \n" + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
+            System.out.println("Análise realizada com sucesso no arquivo " + parser.NOME_DEFAULT_ARQUIVO_ENTRADA);
         } catch (ErroLexico e) {
-            jTextArea1.setText("Erro léxico: " + e.toString());
+            this.sendText("Erro léxico: " + e.toString());
+            System.out.println("Erro léxico: " + e.toString());
         } catch (ErroSintatico e) {
-            jTextArea1.setText("Erro sintático: " + e.toString());
+            this.sendText("Erro sintático: " + e.toString());
+            System.out.println("Erro sintático: " + e.toString());
         } catch (RuntimeException e) {
-            jTextArea1.setText("Erro: " + e.getMessage());
+            this.sendText("Erro: " + e.getMessage());
+            System.out.println("Erro: " + e.getMessage());
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
