@@ -1,2 +1,2 @@
 # LFA
-Repositório com conteudos relacionados a disciplina de linguages formais e autômatos 
+Repositório com conteúdos relacionados a disciplina de linguages formais e autômatos 
